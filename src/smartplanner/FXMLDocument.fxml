@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTogglePane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smartplanner.FXMLDocumentController">
+   <children>
+      <TitledPane id="TitlePane" animated="false" layoutX="53.0" layoutY="-2.0" prefHeight="512.0" prefWidth="258.0" style="-fx-background-color: silver;" stylesheets="@newCascadeStyleSheet.css" text="TP" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: silver;">
+               <children>
+                  <BorderPane id="Accordion" prefHeight="476.0" prefWidth="298.0" style="-fx-background-color: silver;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <top>
+                        <Accordion id="Accordion" style="-fx-background-color: silver;" BorderPane.alignment="CENTER">
+                          <panes>
+                            <TitledPane animated="false" text="Timer">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: silver;">
+                                       <children>
+                                          <VBox layoutX="-1.0" layoutY="-2.0" prefHeight="180.0" prefWidth="277.0" style="-fx-background-color: silver;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <children>
+                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                   <children>
+                                                      <HBox>
+                                                         <children>
+                                                            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <JFXTextField fx:id="text6" alignment="CENTER" focusColor="#f8e005" labelFloat="true" prefHeight="50.0" style="-fx-background-color: silver; -fx-border-color: grey; -fx-border-radius: 45;" text="0" unFocusColor="#d7d3d6">
+                                                                     <font>
+                                                                        <Font size="22.0" />
+                                                                     </font>
+                                                                  </JFXTextField>
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                                               <padding>
+                                                                  <Insets right="1.0" />
+                                                               </padding>
+                                                               <children>
+                                                                  <JFXTextField fx:id="text5" alignment="CENTER" focusColor="#f8e005" prefHeight="50.0" style="-fx-background-color: silver; -fx-border-color: grey; -fx-border-radius: 45;" text="0" unFocusColor="#d7d3d6">
+                                                                     <font>
+                                                                        <Font size="22.0" />
+                                                                     </font>
+                                                                  </JFXTextField>
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                                               <padding>
+                                                                  <Insets left="1.0" />
+                                                               </padding>
+                                                               <children>
+                                                                  <JFXTextField fx:id="text4" alignment="CENTER" focusColor="#f8e005" prefHeight="50.0" style="-fx-background-color: silver; -fx-border-color: grey; -fx-border-radius: 45;" text="0" unFocusColor="#d7d3d6">
+                                                                     <font>
+                                                                        <Font size="22.0" />
+                                                                     </font>
+                                                                  </JFXTextField>
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                                               <padding>
+                                                                  <Insets right="1.0" />
+                                                               </padding>
+                                                               <children>
+                                                                  <JFXTextField fx:id="text3" alignment="CENTER" focusColor="#f8e005" prefHeight="50.0" style="-fx-background-color: silver; -fx-border-color: grey; -fx-border-radius: 45;" text="0" unFocusColor="#d7d3d6">
+                                                                     <font>
+                                                                        <Font size="22.0" />
+                                                                     </font>
+                                                                  </JFXTextField>
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                                               <padding>
+                                                                  <Insets left="1.0" />
+                                                               </padding>
+                                                               <children>
+                                                                  <JFXTextField fx:id="text2" alignment="CENTER" focusColor="#f8e005" prefHeight="50.0" style="-fx-background-color: silver; -fx-border-color: grey; -fx-border-radius: 45;" text="0" unFocusColor="#d7d3d6">
+                                                                     <font>
+                                                                        <Font size="22.0" />
+                                                                     </font>
+                                                                  </JFXTextField>
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <JFXTextField fx:id="text1" alignment="CENTER" focusColor="#f8e005" prefHeight="50.0" style="-fx-background-color: silver; -fx-border-color: grey; -fx-border-radius: 45;" text="0" unFocusColor="#d7d3d6">
+                                                                     <font>
+                                                                        <Font size="22.0" />
+                                                                     </font>
+                                                                  </JFXTextField>
+                                                               </children>
+                                                            </HBox>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="CENTER" prefHeight="82.0" prefWidth="258.0">
+                                                   <children>
+                                                      <HBox alignment="CENTER">
+                                                         <children>
+                                                            <JFXButton fx:id="btnSet" buttonType="RAISED" onAction="#handleBtnSet" ripplerFill="#ffd000" style="-fx-background-color: white;" text="SET">
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin>
+                                                            </JFXButton>
+                                                            <JFXButton fx:id="btnRst" buttonType="RAISED" onAction="#handleBtnRst" ripplerFill="#ffd000" style="-fx-background-color: white;" text="RST">
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin></JFXButton>
+                                                            <JFXButton fx:id="btn1HR" buttonType="RAISED" onAction="#handleBtn1HR" ripplerFill="#ffd000" style="-fx-background-color: white;" text="1HR">
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin></JFXButton>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </TitledPane>
+                            <TitledPane animated="false" text="Order of Priority" textOverrun="CLIP">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="335.0" prefWidth="277.0" style="-fx-background-color: silver;">
+                                       <children>
+                                          <VBox layoutX="88.0" layoutY="59.0" prefHeight="335.0" prefWidth="277.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <children>
+                                                <VBox prefHeight="289.0" prefWidth="258.0">
+                                                   <children>
+                                                      <JFXListView fx:id="List" onMouseClicked="#setOnMouseClicked" prefHeight="265.0" prefWidth="258.0" style="-fx-background-color: silver; -fx-border-color: white;" />
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="28.0" prefWidth="258.0">
+                                                   <children>
+                                                      <HBox />
+                                                      <HBox prefHeight="71.0" prefWidth="258.0">
+                                                         <children>
+                                                            <JFXTextField fx:id="listNumber" alignment="CENTER" focusColor="#ffbf00" labelFloat="true" maxWidth="31.0" minWidth="25.0" prefHeight="29.0" prefWidth="31.0" style="-fx-background-color: white;" text="1">
+                                                               <HBox.margin>
+                                                                  <Insets />
+                                                               </HBox.margin></JFXTextField>
+                                                            <JFXTextField fx:id="listText" focusColor="#ffbf00" labelFloat="true" maxWidth="181.0" minWidth="95.0" prefHeight="29.0" prefWidth="181.0" style="-fx-background-color: white;" />
+                                                            <JFXButton fx:id="ListBtn" buttonType="RAISED" onAction="#handleListBtn" prefHeight="32.0" prefWidth="47.0" ripplerFill="#ffd000" style="-fx-background-color: white;" text="input" />
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="BOTTOM_CENTER" prefHeight="44.0" prefWidth="258.0">
+                                                   <children>
+                                                      <HBox alignment="CENTER">
+                                                         <children>
+                                                            <JFXButton buttonType="RAISED" minWidth="33.0" onAction="#ListHandleRst" prefHeight="23.0" ripplerFill="#ffd000" style="-fx-background-color: white;" text="rst">
+                                                               <HBox.margin>
+                                                                  <Insets bottom="10.0" right="10.0" top="10.0" />
+                                                               </HBox.margin>
+                                                            </JFXButton>
+                                                            <JFXButton buttonType="RAISED" onAction="#buttonSelected" style="-fx-background-color: white;" text="done">
+                                                               <HBox.margin>
+                                                                  <Insets bottom="10.0" right="10.0" top="10.0" />
+                                                               </HBox.margin>
+                                                            </JFXButton>
+                                                            <JFXButton buttonType="RAISED" onAction="#ButtonSave" style="-fx-background-color: white;" text="save">
+                                                               <HBox.margin>
+                                                                  <Insets bottom="10.0" right="10.0" top="10.0" />
+                                                               </HBox.margin>
+                                                            </JFXButton>
+                                                            <JFXButton buttonType="RAISED" layoutX="64.0" layoutY="20.0" minWidth="33.0" onAction="#ListHandleDBRst" prefHeight="23.0" ripplerFill="#ffd000" style="-fx-background-color: white;" text="dbRst">
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin></JFXButton>
+                                                            <JFXButton buttonType="RAISED" layoutX="190.0" layoutY="20.0" minWidth="33.0" onAction="#ListHandleReco" prefHeight="23.0" ripplerFill="#ffd000" style="-fx-background-color: white;" text="reco" />
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </TitledPane>
+                            <TitledPane animated="false" style="-fx-background-color: silver;" text="Link">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: silver;">
+                                       <children>
+                                          <VBox layoutX="102.0" prefHeight="180.0" prefWidth="277.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <children>
+                                                <VBox alignment="CENTER" prefHeight="246.0" prefWidth="258.0" style="-fx-background-color: silver;">
+                                                   <children>
+                                                      <JFXButton alignment="CENTER" buttonType="RAISED" onAction="#handleWebview" ripplerFill="RED" style="-fx-background-color: white;" text="webview" />
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="86.0" prefWidth="258.0" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </TitledPane>
+                              <TitledPane animated="false" text="Statistics">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: silver;">
+                                       <children>
+                                          <JFXTogglePane layoutX="19.6" layoutY="19.6" prefHeight="180.0" prefWidth="215.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="0.0">
+                                             <children>
+                                                <JFXButton fx:id="btnAdd" alignment="CENTER" buttonType="RAISED" onAction="#handleGraph" ripplerFill="#ffbf00" style="-fx-background-color: white;" text="Graph" />
+                                             </children>
+                                          </JFXTogglePane>
+                                       </children></AnchorPane>
+                                 </content>
+                              </TitledPane>
+                              <TitledPane animated="false" text="Options" />
+                          </panes>
+                        </Accordion>
+                     </top>
+                     <bottom>
+                        <VBox prefHeight="15.0" prefWidth="279.0" BorderPane.alignment="CENTER" />
+                     </bottom>
+                  </BorderPane>
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+   </children>
+</AnchorPane>
