@@ -616,4 +616,28 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    @FXML
+    private void recordTime(ActionEvent event) {
+    }
+
+    @FXML
+    private void handlePlus(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleEntireOPList(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleYears(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleRANK(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleTimeCheck(ActionEvent event) {
+    }
+
 }
