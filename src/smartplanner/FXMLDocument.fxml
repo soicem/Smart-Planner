@@ -127,6 +127,7 @@
                                                                <HBox.margin>
                                                                   <Insets right="10.0" />
                                                                </HBox.margin></JFXButton>
+                                                            <JFXButton fx:id="btnPomo" buttonType="RAISED" layoutX="162.0" layoutY="10.0" onAction="#handlePomo" ripplerFill="#ffd000" style="-fx-background-color: white;" text="pomo" />
                                                          </children>
                                                       </HBox>
                                                    </children>

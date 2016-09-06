@@ -2,16 +2,20 @@ package smartplanner;
 
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
+import static java.lang.Thread.sleep;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ListIterator;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -95,6 +99,8 @@ public class FXMLDocumentController implements Initializable {
     int timeCnt = 0; // 한 번 이상 음악재생 방지 flag 정수
 
     String now;
+    @FXML
+    private JFXButton btnPomo;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -106,6 +112,11 @@ public class FXMLDocumentController implements Initializable {
         long time = System.currentTimeMillis();
         SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd");
         now = dayTime.format(new Date(time));
+        
+        timeline = new Timeline(new KeyFrame(
+                        Duration.millis(1000),
+                        ae -> doSomething()));
+                timeline.setCycleCount(Animation.INDEFINITE);
 
         List.setItems(PriList);
 
@@ -116,32 +127,24 @@ public class FXMLDocumentController implements Initializable {
         try {
 
             timeline.stop();
-
-            Player.stop();
             timeCnt = 0;
-            text1.setText("0");
-            text2.setText("0");
-            text3.setText("0");
-            text4.setText("0");
-            text5.setText("0");
-            text6.setText("0");
+            setTime("00:00:00");
+            Player.stop();
+            
         } catch (Exception e) {
-            text1.setText("0");
-            text2.setText("0");
-            text3.setText("0");
-            text4.setText("0");
-            text5.setText("0");
-            text6.setText("0");
+            setTime("00:00:00");
+            Player.stop();
             System.out.println("예외 발생");
+        } finally {
+            
         }
     }
 
     @FXML
     private void handleBtnSet(ActionEvent event) {
         try {
-            String s = System.getProperty("user.dir");
-
-            System.out.println("현재 디렉토리는 " + s + " 입니다");
+            /*String s = System.getProperty("user.dir");
+            System.out.println("현재 디렉토리는 " + s + " 입니다");*/
             if (timeCnt == 0) {
                 sec1 = (Integer.parseInt(text1.getText())) % 10;
                 sec2 = (Integer.parseInt(text2.getText())) % 10;
@@ -153,20 +156,19 @@ public class FXMLDocumentController implements Initializable {
                 sec6 = (Integer.parseInt(text6.getText())) % 10;
 
                 //sum = (sec1 + sec2 * 10 + sec3 * 60 + sec4 * 600 + sec5 * 3600 + sec6 * 36000);
-                timeline = new Timeline(new KeyFrame(
-                        Duration.millis(1000),
-                        ae -> doSomething()));
-                timeline.setCycleCount(Animation.INDEFINITE);
-                timeline.play();
-                timeCnt++;
+                timelineStart();
             } else {
             }
         } catch (Exception e) {
 
         }
     }
-
-    private void doSomething() {
+    private boolean timelineStart(){
+        timeline.play();
+        timeCnt++;
+        return true;
+    }
+    private void doSomething()  {
         if (sec1 > 0) {
             sec1--;
         } else if (sec2 > 0) {
@@ -202,6 +204,8 @@ public class FXMLDocumentController implements Initializable {
         }
         else {
             Player.play();
+           
+            System.out.println("hello");
             timeline.stop();
             timeCnt--;
         }
@@ -256,6 +260,7 @@ public class FXMLDocumentController implements Initializable {
             PriList.clear();
             PriList = bakup;
             List.setItems(bakup);
+            
         } catch (Exception e) {
             System.out.println("예외 발생");
         }
@@ -538,25 +543,33 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void ListHandleDBRst(ActionEvent event) throws Exception {
+    private void ListHandleDBRst(ActionEvent event) throws ClassNotFoundException {
         Class.forName("org.sqlite.JDBC");
-        Connection conn = DriverManager.getConnection("jdbc:sqlite:test.db");
-        Statement stat = conn.createStatement();
-
-        stat.executeUpdate("drop table if exists data;");
-        stat.executeUpdate(
-                "create table data (_id integer primary key autoincrement, "
-                + "date text not null, count integer, score integer);");
-
-        stat.executeUpdate("drop table if exists ListView;");
-        stat.executeUpdate(
-                "create table ListView (_id integer primary key autoincrement, "
-                + "date text not null, string_1 text, string_2 text, string_3 text, "
-                + "string_4 text, string_5 text, string_6 text,"
-                + " string_7 text, string_8 text, logic integer);");
-        System.out.println("DB reset!");
-        conn.close();
-        stat.close();
+        Statement stat;
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:test.db")) {
+            
+            stat = conn.createStatement();
+            stat.executeUpdate("drop table if exists data;");
+            stat.executeUpdate(
+                    "create table data (_id integer primary key autoincrement, "
+                            + "date text not null, count integer, score integer);");
+            stat.executeUpdate("drop table if exists ListView;");
+            stat.executeUpdate(
+                    "create table ListView (_id integer primary key autoincrement, "
+                            + "date text not null, string_1 text, string_2 text, string_3 text, "
+                            + "string_4 text, string_5 text, string_6 text,"
+                            + " string_7 text, string_8 text, logic integer);");
+            System.out.println("DB reset!");
+            conn.close();
+            stat.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            
+        } finally{
+             
+        }
+       
+        
 
     }
 
@@ -639,5 +652,39 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleTimeCheck(ActionEvent event) {
     }
+
+    @FXML
+    private void handlePomo(ActionEvent event) {
+        setTime("00:25:00");
+        timelineStart();
+        /*if(isTimeZero())
+            setTime("00:05:00");
+        timelineStart();*/
+         
+    }
+    
+    private void setTime(String time){
+        String[] split = time.split(":");
+        sec6 = Integer.parseInt(split[0])/10;
+        sec5 = Integer.parseInt(split[0])%10;
+        sec4 = Integer.parseInt(split[1])/10;
+        sec3 = Integer.parseInt(split[1])%10;
+        sec2 = Integer.parseInt(split[2])/10;
+        sec1 = Integer.parseInt(split[2])%10;
+        
+        text1.setText(Integer.toString(sec1));
+        text2.setText(Integer.toString(sec2));
+        text3.setText(Integer.toString(sec3));
+        text4.setText(Integer.toString(sec4));
+        text5.setText(Integer.toString(sec5));
+        text6.setText(Integer.toString(sec6));
+    }
+    
+    /*private boolean isTimeZero(){
+        if(sec1 == 0 && sec2 == 0 && sec3 ==0 && sec4 == 0 && sec5 == 0 && sec6 ==0)
+            return true;
+        else
+            return false;
+    }*/
 
 }
