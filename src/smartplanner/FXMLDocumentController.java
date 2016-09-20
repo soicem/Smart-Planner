@@ -1,8 +1,8 @@
 package smartplanner;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
-import static java.lang.Thread.sleep;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -87,8 +87,6 @@ public class FXMLDocumentController implements Initializable {
 
     public static ObservableList PriList
             = FXCollections.observableArrayList();
-    /*public static ObservableList data
-            = FXCollections.observableArrayList();*/
     @FXML
     private TextField listText;
     @FXML
@@ -101,6 +99,16 @@ public class FXMLDocumentController implements Initializable {
     String now;
     @FXML
     private JFXButton btnPomo;
+    
+    boolean isPomo = false;
+    @FXML
+    private JFXButton btnStop;
+    @FXML
+    private JFXTextField count;
+    int pomoCount = 0;
+    @FXML
+    private JFXTextField time;
+    String pomoTime;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -156,17 +164,27 @@ public class FXMLDocumentController implements Initializable {
                 sec6 = (Integer.parseInt(text6.getText())) % 10;
 
                 //sum = (sec1 + sec2 * 10 + sec3 * 60 + sec4 * 600 + sec5 * 3600 + sec6 * 36000);
-                timelineStart();
+                timelineStart("NONE");
             } else {
             }
         } catch (Exception e) {
 
         }
     }
-    private boolean timelineStart(){
+    private boolean timelineStart(String str){
         timeline.play();
         timeCnt++;
-        return true;
+        if("pomo".equals(str)){
+            return true;
+        } else if("rest".equals(str)){
+            if(Integer.parseInt(count.getText()) == 0)
+                return false;
+            else if(Integer.parseInt(count.getText()) > 0){
+                count.setText(String.valueOf(Integer.parseInt(count.getText())-1));
+                return true;
+            }
+        }
+        return false;
     }
     private void doSomething()  {
         if (sec1 > 0) {
@@ -205,9 +223,20 @@ public class FXMLDocumentController implements Initializable {
         else {
             Player.play();
            
-            System.out.println("hello");
             timeline.stop();
             timeCnt--;
+            
+            if(isPomo){
+                if(pomoTime.equals(time.getText())){
+                    pomoTime = "05";
+                    setTime("00:"+pomoTime+":00");
+                    isPomo = timelineStart("rest");
+                } else if("05".equals(pomoTime)){
+                    pomoTime = time.getText();
+                    setTime("00:"+pomoTime+":00");
+                    isPomo = timelineStart("pomo");
+                }
+            }
         }
 
         text1.setText(Integer.toString(sec1));
@@ -629,9 +658,6 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
-    @FXML
-    private void recordTime(ActionEvent event) {
-    }
 
     @FXML
     private void handlePlus(ActionEvent event) {
@@ -655,12 +681,9 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void handlePomo(ActionEvent event) {
-        setTime("00:25:00");
-        timelineStart();
-        /*if(isTimeZero())
-            setTime("00:05:00");
-        timelineStart();*/
-         
+        pomoTime = time.getText();
+        setTime("00:"+pomoTime+":00");
+        isPomo = timelineStart("pomo");
     }
     
     private void setTime(String time){
@@ -686,5 +709,10 @@ public class FXMLDocumentController implements Initializable {
         else
             return false;
     }*/
+
+    @FXML
+    private void handleStop(ActionEvent event) {
+        Player.stop();
+    }
 
 }
