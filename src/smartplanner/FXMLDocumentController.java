@@ -113,7 +113,7 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        final URL resource = getClass().getResource("mp3/music.mp3"); // 경로 조심
+        final URL resource = getClass().getResource("mp3/The_everlasting_thing.mp3"); // 경로 조심
         final Media media = new Media(resource.toString());
         Player = new MediaPlayer(media);
 
@@ -289,7 +289,7 @@ public class FXMLDocumentController implements Initializable {
             PriList.clear();
             PriList = bakup;
             List.setItems(bakup);
-            
+            time.setText("00");
         } catch (Exception e) {
             System.out.println("예외 발생");
         }
@@ -681,7 +681,13 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void handlePomo(ActionEvent event) {
+        
         pomoTime = time.getText();
+        if(pomoTime.equals("00") || pomoTime.equals("0")){
+            pomoTime = "25";
+            time.setText("25");
+        }
+        System.out.println(pomoTime);
         setTime("00:"+pomoTime+":00");
         isPomo = timelineStart("pomo");
     }

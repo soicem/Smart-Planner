@@ -118,7 +118,7 @@
                                                                </HBox.margin>
                                                             </JFXTextField>
                                                             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="33.0" prefWidth="135.0" text="time :" />
-                                                            <JFXTextField fx:id="time" alignment="CENTER">
+                                                            <JFXTextField fx:id="time" alignment="CENTER" text="00">
                                                                <HBox.margin>
                                                                   <Insets right="30.0" />
                                                                </HBox.margin>
