@@ -294,7 +294,7 @@
                                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#handlePlus" prefHeight="50.0" prefWidth="120.0" ripplerFill="#ffbf00" style="-fx-background-color: white;" text="+@" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#handlePlayList" prefHeight="50.0" prefWidth="120.0" ripplerFill="#ffbf00" style="-fx-background-color: white;" text="play list" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                    <GridPane.margin>
                                                       <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                                                    </GridPane.margin>

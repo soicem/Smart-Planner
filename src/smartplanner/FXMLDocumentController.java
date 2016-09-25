@@ -1,6 +1,8 @@
 package smartplanner;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
@@ -28,6 +30,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.AreaChart;
+import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -52,10 +55,6 @@ public class FXMLDocumentController implements Initializable {
     private Button btnRst;
     @FXML
     private Button btnAdd;
-    @FXML
-    private JFXButton btnSet;
-    @FXML
-    private JFXButton btn1HR;
 
     @FXML
     private TextField text6;
@@ -97,18 +96,22 @@ public class FXMLDocumentController implements Initializable {
     int timeCnt = 0; // 한 번 이상 음악재생 방지 flag 정수
 
     String now;
-    @FXML
-    private JFXButton btnPomo;
     
     boolean isPomo = false;
-    @FXML
-    private JFXButton btnStop;
     @FXML
     private JFXTextField count;
     int pomoCount = 0;
     @FXML
     private JFXTextField time;
     String pomoTime;
+    @FXML
+    private JFXButton btnSet;
+    @FXML
+    private JFXButton btn1HR;
+    @FXML
+    private JFXButton btnPomo;
+    @FXML
+    private JFXButton btnStop;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -320,7 +323,7 @@ public class FXMLDocumentController implements Initializable {
             Stage dialog = new Stage(StageStyle.UTILITY);
             dialog.initModality(Modality.WINDOW_MODAL);
             dialog.initOwner(btnAdd.getScene().getWindow());
-            dialog.setTitle("Hello graph");
+            dialog.setTitle("monthly check");
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Graph.fxml"));
 
@@ -566,6 +569,7 @@ public class FXMLDocumentController implements Initializable {
             conn.setAutoCommit(true);
 
             prep.close();
+            conn.close();
 
         }
 
@@ -653,30 +657,27 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
-    @FXML
-    private void setOnMouseClicked(MouseEvent event) {
-
-    }
-
-
-    @FXML
-    private void handlePlus(ActionEvent event) {
-    }
-
-    @FXML
-    private void handleEntireOPList(ActionEvent event) {
-    }
-
-    @FXML
-    private void handleYears(ActionEvent event) {
-    }
-
-    @FXML
-    private void handleRANK(ActionEvent event) {
-    }
 
     @FXML
     private void handleTimeCheck(ActionEvent event) {
+        try {
+            Stage dialog = new Stage(StageStyle.UTILITY);
+            dialog.initModality(Modality.WINDOW_MODAL);
+            dialog.initOwner(btnAdd.getScene().getWindow());
+            dialog.setTitle("time check");
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("timeCheck.fxml"));
+
+            Parent root1 = (Parent) fxmlLoader.load();
+            
+
+            Scene scene = new Scene(root1);
+            dialog.setScene(scene);
+            dialog.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -719,6 +720,44 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleStop(ActionEvent event) {
         Player.stop();
+    }
+
+    @FXML
+    private void handlePlayList(ActionEvent event) {
+        try {
+            Stage dialog = new Stage(StageStyle.UTILITY);
+            dialog.initModality(Modality.WINDOW_MODAL);
+            dialog.initOwner(btnAdd.getScene().getWindow());
+            dialog.setTitle("playList check");
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("playList.fxml"));
+
+            Parent root1 = (Parent) fxmlLoader.load();
+            
+
+            Scene scene = new Scene(root1);
+            dialog.setScene(scene);
+            dialog.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void setOnMouseClicked(MouseEvent event) {
+    }
+
+    @FXML
+    private void handleEntireOPList(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleYears(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleRANK(ActionEvent event) {
     }
 
 }

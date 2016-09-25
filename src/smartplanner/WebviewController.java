@@ -51,4 +51,8 @@ public class WebviewController implements Initializable {
     private void handleBlog2Action(ActionEvent event) {
         webview.getEngine().load("http://soicem.tistory.com/");
     }
+
+    @FXML
+    private void handleUrlField(ActionEvent event) {
+    }
 }

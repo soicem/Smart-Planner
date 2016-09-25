@@ -7,7 +7,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smartplanner.WebviewController">
    <children>
-      <JFXTextField fx:id="urlField" layoutX="10.0" layoutY="10.0" maxWidth="420.0" minWidth="420.0" prefHeight="29.0" prefWidth="420.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="170.0" />
+      <JFXTextField fx:id="urlField" layoutX="10.0" layoutY="10.0" maxWidth="420.0" minWidth="420.0" onAction="#handleUrlField" prefHeight="29.0" prefWidth="420.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="170.0" />
       <JFXButton layoutX="444.0" layoutY="10.0" onAction="#HandleBlog1Action" text="blog1" AnchorPane.rightAnchor="106.0" />
       <JFXButton layoutX="487.0" layoutY="10.0" onAction="#handleBlog2Action" text="blog2" AnchorPane.rightAnchor="63.0" />
       <JFXButton layoutX="530.0" layoutY="10.0" onAction="#handleloAction" text="lo" AnchorPane.rightAnchor="43.0" />
